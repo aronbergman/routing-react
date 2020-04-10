@@ -6,7 +6,7 @@ import NewPost from './NewPost/NewPost';
 import './Blog.css';
 import {Link, NavLink} from "react-router-dom";
 import Posts from "./Posts/Posts";
-import {Route} from "react-router";
+import {Route, Switch} from "react-router";
 
 class Blog extends Component {
     render() {
@@ -31,11 +31,12 @@ class Blog extends Component {
                     </nav>
                 </header>
 
-                <Route path="/" component={Posts} exact/>
-                {/*<Route path="/" render={() => <Posts/>} exact/>*/}
-                <Route path="/posts/:id" component={FullPost}/>
-                <Route path="/new-post" component={NewPost}/>
-
+                <Switch>
+                    <Route path="/" component={Posts} exact/>
+                    {/*<Route path="/" render={() => <Posts/>} exact/>*/}
+                    <Route path="/posts/:id" component={FullPost}/>
+                    <Route path="/new-post" component={NewPost}/>
+                </Switch>
             </div>
         );
     }

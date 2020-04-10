@@ -33,6 +33,10 @@ class Posts extends React.Component {
 
     postSelectedHandler = (id) => {
         this.setState({selectedPostId: id});
+
+        this.props.history.push({
+            pathname: '/posts/' +id
+        })
     };
 
     render() {
@@ -42,7 +46,7 @@ class Posts extends React.Component {
                 return <Link to={`/posts/${post.id}`} key={post.id}>
                     <Post title={post.title}
                           author={post.author}
-                          clicked={() => this.postSelectedHandler(post.id)}/>;
+                          clicked={() => this.postSelectedHandler(post.id)}/>
                 </Link>
             });
         }

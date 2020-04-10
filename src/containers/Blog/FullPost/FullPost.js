@@ -6,7 +6,7 @@ import './FullPost.css';
 class FullPost extends Component {
     state = {
         loadedPost: null
-    }
+    };
 
     componentDidMount () {
         console.log(this.props);

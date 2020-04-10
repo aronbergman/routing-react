@@ -4,7 +4,7 @@ import Post from '../../components/Post/Post';
 import FullPost from './FullPost/FullPost';
 import NewPost from './NewPost/NewPost';
 import './Blog.css';
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import Posts from "./Posts/Posts";
 import {Route} from "react-router";
 
@@ -15,15 +15,19 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to="/">Home</NavLink></li>
-                            <li><NavLink to="/new-post">New Post</NavLink></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to={{
+                                pathname: "/new-post",
+                                hash: '#submit',
+                                search: '?quick-submit=true'
+                            }}>New Post</Link></li>
                         </ul>
                     </nav>
                 </header>
 
-                    <Route path="/" component={Posts} exact/>
-                    {/*<Route path="/" render={() => <Posts/>} exact/>*/}
-                    <Route path="/new-post" component={NewPost}/>
+                <Route path="/" component={Posts} exact/>
+                {/*<Route path="/" render={() => <Posts/>} exact/>*/}
+                <Route path="/new-post" component={NewPost}/>
 
             </div>
         );

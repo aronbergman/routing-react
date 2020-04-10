@@ -42,7 +42,6 @@ class Posts extends React.Component {
                     key={post.id}
                     title={post.title}
                     author={post.author}
-                    {/*{...this.props}*/}
                     clicked={() => this.postSelectedHandler(post.id)}/>;
             });
         }

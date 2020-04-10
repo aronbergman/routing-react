@@ -6,6 +6,7 @@ import NewPost from './NewPost/NewPost';
 import './Blog.css';
 import {NavLink} from "react-router-dom";
 import Posts from "./Posts/Posts";
+import {Route} from "react-router";
 
 class Blog extends Component {
     render() {
@@ -19,7 +20,10 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <Posts/>
+               <Route path="/" component={Posts} exact/>
+               {/*<Route path="/" render={() => <Posts/>} exact/>*/}
+               <Route path="/new-post" component={NewPost}/>
+
             </div>
         );
     }

@@ -28,6 +28,7 @@ class NewPost extends Component {
     };
 
     componentDidMount() {
+        // здесь можно сделать replace если нет авторизации
         console.log(this.props);
     }
 

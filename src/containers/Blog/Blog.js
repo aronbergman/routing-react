@@ -4,11 +4,15 @@ import Post from '../../components/Post/Post';
 import FullPost from './FullPost/FullPost';
 import NewPost from './NewPost/NewPost';
 import './Blog.css';
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, Redirect} from "react-router-dom";
 import Posts from "./Posts/Posts";
 import {Route, Switch} from "react-router";
 
 class Blog extends Component {
+    state = {
+        auth: false
+    };
+
     render() {
         return (
             <div className="Blog">
@@ -30,8 +34,9 @@ class Blog extends Component {
 
                 <Switch>
                     {/*<Route path="/" render={() => <Posts/>} exact/>*/}
-                    <Route path="/new-post" component={NewPost}/>
+                    {this.state.auth ? <Route path="/new-post" component={NewPost}/> : null}
                     <Route path="/posts" component={Posts}/>
+                    <Redirect to="/posts"/>
                 </Switch>
             </div>
         );

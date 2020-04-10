@@ -21,7 +21,9 @@ class NewPost extends Component {
         axios.post('/posts', data)
             .then(response => {
                 console.log(response);
-                this.setState({submited: this})
+                this.setState({submited: this});
+                this.props.history.push('/posts');
+                this.props.history.replace('/posts')
             });
     };
 
@@ -30,11 +32,11 @@ class NewPost extends Component {
     }
 
     render() {
-        let redirect = null;
-        this.state.submited ? redirect = <Redirect to='/posts'/> : redirect = null;
+        // let redirect = null;
+        // this.state.submited ? redirect = <Redirect to='/posts'/> : redirect = null;
         return (
             <div className="NewPost">
-                {redirect}
+                {/*{redirect}*/}
                 <h1>Add a Post</h1>
                 <label>Title</label>
                 <input type="text" value={this.state.title}

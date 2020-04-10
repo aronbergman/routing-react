@@ -12,7 +12,7 @@ class Blog extends Component {
     render() {
         return (
             <div className="Blog">
-                <header>
+                <header>:
                     <nav>
                         <ul>
                             <li><NavLink to="/"
@@ -33,6 +33,7 @@ class Blog extends Component {
 
                 <Route path="/" component={Posts} exact/>
                 {/*<Route path="/" render={() => <Posts/>} exact/>*/}
+                <Route path="/posts/:id" component={FullPost}/>
                 <Route path="/new-post" component={NewPost}/>
 
             </div>

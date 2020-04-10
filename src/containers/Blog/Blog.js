@@ -20,9 +20,10 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-               <Route path="/" component={Posts} exact/>
-               {/*<Route path="/" render={() => <Posts/>} exact/>*/}
-               <Route path="/new-post" component={NewPost}/>
+
+                    <Route path="/" component={Posts} exact/>
+                    {/*<Route path="/" render={() => <Posts/>} exact/>*/}
+                    <Route path="/new-post" component={NewPost}/>
 
             </div>
         );

@@ -3,6 +3,8 @@ import Post from "../../../components/Post/Post";
 import axios from "../../../axios";
 import './Posts.css';
 import {Link} from "react-router-dom";
+import FullPost from "../FullPost/FullPost";
+import {Route} from "react-router";
 
 class Posts extends React.Component {
     state = {
@@ -35,7 +37,7 @@ class Posts extends React.Component {
         this.setState({selectedPostId: id});
 
         this.props.history.push({
-            pathname: '/posts/' +id
+            pathname: '/posts/' + id
         })
     };
 
@@ -43,18 +45,20 @@ class Posts extends React.Component {
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>;
         if (!this.state.error) {
             posts = this.state.posts.map(post => {
-                return <Link to={`/posts/${post.id}`} key={post.id}>
-                    <Post title={post.title}
-                          author={post.author}
-                          clicked={() => this.postSelectedHandler(post.id)}/>
-                </Link>
+                return <Post key={post.id}
+                             title={post.title}
+                             author={post.author}
+                             clicked={() => this.postSelectedHandler(post.id)}/>
             });
         }
 
         return (
-            <section className="Posts">
-                {posts}
-            </section>
+            <div>
+                <section className="Posts">
+                    {posts}
+                </section>
+                <Route path={this.props.match.url + '/:id'} component={FullPost}/>
+            </div>
         )
     }
 

@@ -2,15 +2,19 @@ import React, {Component} from 'react';
 import axios from '../../axios';
 import Post from '../../components/Post/Post';
 import FullPost from './FullPost/FullPost';
-import NewPost from './NewPost/NewPost';
 import './Blog.css';
 import {Link, NavLink, Redirect} from "react-router-dom";
 import Posts from "./Posts/Posts";
 import {Route, Switch} from "react-router";
+import asuncComponent from "../../hoc/asyncComponent";
+
+const AcyncNewPost = asuncComponent(() => {
+    return import('./NewPost/NewPost')
+});
 
 class Blog extends Component {
     state = {
-        auth: false
+        auth: true
     };
 
     render() {
@@ -34,7 +38,7 @@ class Blog extends Component {
 
                 <Switch>
                     {/*<Route path="/" render={() => <Posts/>} exact/>*/}
-                    {this.state.auth ? <Route path="/new-post" component={NewPost}/> : null}
+                    {this.state.auth ? <Route path="/new-post" component={AcyncNewPost}/> : null}
                     <Route path="/posts" component={Posts}/>
                     <Redirect to="/posts"/>
                 </Switch>
